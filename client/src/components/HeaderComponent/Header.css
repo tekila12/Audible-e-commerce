@@ -16,15 +16,17 @@
 
 .input__box {
   height: 10px;
-  border: 1px solid grey;
+  border: 2px solid grey;
   font-family: monospace;
   width: 208px;
   z-index: 10;
+  border-radius: 10px;
+  box-shadow: none;
+  outline: 0;
 }
-.search__icon {
-  position: absolute;
-  margin-top: -25px;
-  margin-left: 300px;
+.input__box:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
 }
 .search__books {
   width: 200px;
@@ -107,9 +109,10 @@
     font-size: 14px;
   }
   .input__box {
-    margin-left: 10px;
+    margin-left: 0px;
     margin-right: -100px;
   }
+
   .search__cont {
     top: 5%;
   }

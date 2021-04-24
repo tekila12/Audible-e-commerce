@@ -33,21 +33,21 @@ function CartProvider({ children }) {
 
   const removeItem = React.useCallback((id) => {
     setCart([...cart].filter(item => item.id !== id));
-  }
+  },[cart]
   )
   
-  const increaseAmount = (id) => {
+  const increaseAmount = React.useCallback((id) => {
     const newCart = [...cart].map(item => {
       return item.id === id
         ? { ...item, amount: item.amount + 1 }
         : { ...item };
     });
     setCart(newCart);
-  }
-  
+  },[cart]
+  )
 
 
-  const decreaseAmount = (id, amount) => {
+  const decreaseAmount = React.useCallback((id, amount) => {
     if (amount === 1) {
       removeItem(id);
       return;
@@ -59,8 +59,8 @@ function CartProvider({ children }) {
       });
       setCart(newCart);
     }
-  }
-  
+  },[cart, removeItem]
+  )
   const addToCart = React.useCallback((book) => {
     const { id, image, by, bookName,regularPrice } = book;
     const item = [...cart].find(item => item.id === id);
@@ -72,10 +72,10 @@ function CartProvider({ children }) {
       const newCart = [...cart, newItem];
       setCart(newCart);
     }
-  })
+  },[cart, increaseAmount])
   const clearCart = React.useCallback(() => {
     setCart([]);
-  }
+  },[]
   )
 
 const myCartContextValue= React.useMemo(()=>({

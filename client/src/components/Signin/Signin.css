@@ -132,7 +132,7 @@
   height: 100vh;
   background-color: white;
   position: absolute;
-  opacity: 0.7;
+  opacity: 0.87;
   top: 0%;
   overflow: hidden;
 }
@@ -147,8 +147,7 @@
   line-height: 20px;
   font-size: 16px;
   font-weight: 700;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .login__btn {
   margin-right: 40px;
@@ -274,6 +273,7 @@
   color: black;
   -webkit-animation: beat 1.5s ease-in-out infinite both;
   animation: beat 1.5s ease-in-out infinite both;
+  font-size: 20px;
 }
 
 @-webkit-keyframes beat {

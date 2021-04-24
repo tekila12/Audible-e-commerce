@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 100px;
 }
 
 .empty__btn {
@@ -21,7 +22,11 @@
   border: none;
   border-color: #f7991c;
 }
-
+.cart__info {
+  margin-top: 10px;
+  max-width: 400px;
+  font-weight: 500;
+}
 .empty__cartpic {
   width: 250px;
   height: auto;
@@ -398,7 +403,7 @@
   height: 100vh;
   background-color: white;
   position: absolute;
-  opacity: 0.6;
+  opacity: 0.85;
   top: 0%;
 }
 
@@ -567,6 +572,33 @@
   line-height: 34px;
   margin-right: 3rem;
   margin-left: 3rem;
+  -webkit-animation: roll-in-left 0.6s ease-out both;
+  animation: roll-in-left 0.6s ease-out both;
+}
+
+@-webkit-keyframes roll-in-left {
+  0% {
+    -webkit-transform: translateX(-800px) rotate(-540deg);
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes roll-in-left {
+  0% {
+    -webkit-transform: translateX(-800px) rotate(-540deg);
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .stripe__info {

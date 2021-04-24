@@ -21,12 +21,14 @@ const HoverBooks = ({...book}) => {
             {inHoverBooks && 
               <div className="hover__containter">
                 <h3>{book.bookName}</h3> 
-                <h4  className='hover__color'><h4>By:</h4> {book.by}</h4>
-                <h4  className='hover__color'><h4>Narreted by:</h4>{book.narretedBy}</h4>
-                <h4 className='hover__color'><h4>Length:</h4>  {book.length}</h4>
-                <h4 className='hover__color'><h4>Rating:</h4> {book.rating}</h4>
+                <div  className='hover__color'><h4>By:</h4> {book.by}</div>
+                <div  className='hover__color'><h4>Narreted by:</h4>{book.narretedBy}</div>
+                <div className='hover__color'><h4>Length:</h4>  {book.length}</div>
+                <div className='hover__color'><h4>Rating:</h4> {book.rating}</div>
                <HoverRating />
                 <div>
+                  <h4>Publisher's</h4>
+                  <h4>Information:</h4>
                   <p className='hover__info'>{book.info}</p>
                 </div>
 

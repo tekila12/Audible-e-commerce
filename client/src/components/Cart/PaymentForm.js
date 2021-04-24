@@ -21,7 +21,7 @@ const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
+  
     window
       .fetch("/create-payment-intent", {
         method: "POST",
@@ -80,7 +80,6 @@ const PaymentForm = () => {
       
     });
      
-    /*cardHolder */
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);

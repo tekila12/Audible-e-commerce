@@ -60,7 +60,7 @@ const Register = () => {
       if(success){
         history.push('/')
       }
-    },4000)
+    },3000)
   },[success, history])
 
 
