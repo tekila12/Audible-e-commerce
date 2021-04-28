@@ -2,6 +2,54 @@
   margin: 0;
   padding: 0;
 }
+/*Dev Job */
+
+.dev__main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 12.5rem;
+  height: 16.5rem;
+  perspective: 70rem;
+  border-radius: 0.25rem;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
+  animation: spining 0.6s all linear;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background: linear-gradient(to right, #015383, #005181);
+}
+.dev__main > h5 {
+  text-align: center;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+.dev__side {
+  height: 100% !important;
+  width: 1rem;
+  border-right: 4px solid #03456b;
+  margin-top: -15.62rem;
+}
+
+.dev__right {
+  background: #00aed3;
+  width: 3rem;
+  height: 2rem;
+  display: flex !important;
+  border-left: 16px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 100px solid white;
+  border-top: 70px solid #8ef0ef;
+  margin-left: 1rem;
+}
+.dev__bottom > h5 {
+  margin-left: 80px;
+  margin-top: -29px;
+  width: 500px;
+}
+/*Book Animation */
 body::-webkit-scrollbar {
   width: 1em;
 }

@@ -1,25 +1,33 @@
 import './App.css';
-import React, { useEffect } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { Switch, Route } from "react-router-dom";
 import Header from './components/HeaderComponent/Header';
 import Home from './components/Home/Home';
 import Book from './components/Home/Book';
 import BookAnimation from './BookAnimation';
-import Cart from './components/Cart/Cart';
-import Register from './components/Signin/Register';
 import ResetPassword from './components/Signin/ResetPassword';
 import ForgotPassword from './components/Signin/ForgotPassword';
-import Login from './components/Signin/Login';
-import Books from './components/Home/Books';
+
 import StripeContainer from './components/Cart/StripeContainer';
+import DevBook from './DevBook';
 
 
+  const Register = lazy (()=> import ('./components/Signin/Register'))
+  const Cart = lazy (()=>('./components/Cart/Cart'))
+  const Books = lazy (()=> ('./components/Home/Books'))
 
 
+  const Login = lazy(() => {
+    return Promise.all([
+      import("./components/Signin/Login"),
+      new Promise(resolve => setTimeout(resolve, 800000))
+    ])
+    .then(([moduleExports]) => moduleExports);
+  });
 
 
  
-function App() {
+const App=()=> {
 
   const [loading, setLoading]= React.useState(true)
 
@@ -31,7 +39,8 @@ function App() {
   },[])
   return (
     <React.Fragment>
-      {!loading ?(      
+      {!loading ?(   
+        <Suspense fallback={<DevBook/>} >   
         <Switch>
         <Route exact path='/'>
          <Header />
@@ -65,7 +74,7 @@ function App() {
          <Login />
         </Route>  
         </Switch>
-      
+      </Suspense >
        ):(
        <>
       <BookAnimation />
