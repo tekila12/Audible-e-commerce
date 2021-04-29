@@ -101,7 +101,7 @@ const PaymentForm = () => {
     if(succeeded){
       history.push('/')
     }
-    }, 30000);
+    }, 3000);
   },[history, succeeded])
  
 console.log(name)
