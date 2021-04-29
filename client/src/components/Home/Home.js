@@ -1,11 +1,10 @@
-import React,{useState, useRef, useEffect, useContext} from 'react'
+import React,{useState, useRef, useEffect, useContext, Suspense} from 'react'
 import './Home.css'
-import Books from './Books'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import { BookContext } from "../../context/books";
 import Filters from './Filters';
 import Responsive from './Responsive'
-
+import BookAnimation from './BookAnimation'
 const Home = () => {
   const {
     books,
@@ -33,7 +32,18 @@ const Home = () => {
       }
      })
 
+
+     
+
+  const Books= React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./Books")), 700)
+      )
+  );
+
    return (
+     <Suspense fallback={<BookAnimation/>}> 
         <div className='books__container' >
             <div ref={ref} className='responsive' >
               <GiHamburgerMenu onClick={()=> setIsCategoryOpen(!isCategoryOpen)}/> 
@@ -55,6 +65,7 @@ const Home = () => {
             <Filters />
             <Books items={books} />  
         </div>
+        </Suspense>
     )
 }
 

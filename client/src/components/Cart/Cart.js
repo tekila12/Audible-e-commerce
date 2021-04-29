@@ -2,7 +2,6 @@ import React,{useContext} from "react";
 import EmptyCart from "./EmptyCart";
 import CartItem from './CartItem'
 import { CartContext } from "../../context/cart";
-import './Cart.css'
 import {useHistory } from 'react-router-dom'
 
 

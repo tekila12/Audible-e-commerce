@@ -1,10 +1,20 @@
-import React,{useContext} from 'react'
+import React,{Suspense, useContext} from 'react'
 import {useLocation,  useHistory, useParams
   } from "react-router-dom";
 import { CartContext } from '../../context/cart';
 import { UserContext } from '../../context/user';
-import SlideShow from './SlideShow'
+
+
+
+const SlideShow = React.lazy(
+  () =>
+    new Promise((resolve, reject) =>
+      setTimeout(() => resolve(import("./SlideShow")), 1000)
+    )
+);
+
 const Book = () => {
+
     const { state: { book } } = useLocation();  
     const {addToCart }= useContext(CartContext)
     const { bookId } = useParams();
@@ -30,15 +40,16 @@ const Book = () => {
         <button onClick={()=>{history.push("/login")}} className='adt__infoLogin'  >
          Login to buy books
         </button>
-        )}
-       
+        )}    
          </div>
         </div>
-          <SlideShow />
+        <Suspense fallback={<div class="load"><div></div><div></div><div></div></div>}>
+          <SlideShow /> 
         <div className='publish__summ'>
           <h3>Publisher's Summary</h3>
           <p className='info__text'>{book.info}</p>
         </div>
+        </Suspense>   
         </div> 
     )
 }

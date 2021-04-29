@@ -10,7 +10,6 @@ export default function LoginLink() {
   if (user.token) {
     return (
       <>
-      <p className='hi'>Hi,{user.username}</p>
       <button
         onClick={() => {
           logoutHandler();

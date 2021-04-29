@@ -1,85 +1,115 @@
 import './App.css';
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { Suspense,} from 'react'
 import { Switch, Route } from "react-router-dom";
 import Header from './components/HeaderComponent/Header';
-import Home from './components/Home/Home';
-import Book from './components/Home/Book';
-import BookAnimation from './BookAnimation';
-import ResetPassword from './components/Signin/ResetPassword';
-import ForgotPassword from './components/Signin/ForgotPassword';
-
-import StripeContainer from './components/Cart/StripeContainer';
-import DevBook from './DevBook';
+import Home from "./components/Home/Home"
+import Books from "./components/Home/Books"
 
 
-  const Register = lazy (()=> import ('./components/Signin/Register'))
-  const Cart = lazy (()=>('./components/Cart/Cart'))
-  const Books = lazy (()=> ('./components/Home/Books'))
 
-
-  const Login = lazy(() => {
-    return Promise.all([
-      import("./components/Signin/Login"),
-      new Promise(resolve => setTimeout(resolve, 800000))
-    ])
-    .then(([moduleExports]) => moduleExports);
-  });
 
 
  
+const Register= React.lazy(
+  () =>
+    new Promise((resolve, reject) =>
+      setTimeout(() => resolve(import("./components/Signin/Register")), 300)
+    )
+);
+
+
+  const StripeContainer= React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Cart/StripeContainer")), 700)
+      )
+  );
+
+
+  const Cart = React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Cart/Cart")), 700)
+      )
+  );
+
+  const Login = React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Signin/Login")), 700)
+      )
+  );
+
+  const Book = React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Home/Book")), 700)
+      )
+  );
+
+  const ResetPassword = React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Signin/ResetPassword")), 300)
+      )
+  );
+
+  const ForgotPassword = React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Signin/ForgotPassword")), 300)
+      )
+  );
+
+
+ 
+ 
 const App=()=> {
 
-  const [loading, setLoading]= React.useState(true)
-
-  useEffect(()=>{
-    setTimeout(() => {  
-      setLoading(false)
-    }, 3000);
-    
-  },[])
+  
   return (
     <React.Fragment>
-      {!loading ?(   
-        <Suspense fallback={<DevBook/>} >   
         <Switch>
         <Route exact path='/'>
          <Header />
          <Home />      
         </Route> 
+        <Suspense fallback={  <div  className="login__loader">
+          <img src='./audible/Glowing ring.gif' alt= ''></img>            
+          </div>  }>    
+        <Route exact path='/register'>
+        <Register />
+        </Route>    
+        <Route path='/login'>
+         <Login />
+        </Route>
+        <Route path="/stripecontainer">
+          <Header />
+          <StripeContainer /> 
+        </Route>  
         <Route path="/cart">
           <Header />
           <Cart /> 
-        </Route> 
-        <Route path="/stripecontainer">
-           <Header />
-          <StripeContainer /> 
-        </Route>    
-        <Route path='/book/:bookId'>
+        </Route>   
+         <Route path='/book/:bookId'>
          <Header />
          <Book />      
-        </Route> 
-        <Route path='books'>
-          <Books/>
-        </Route>
+        </Route>     
         <Route path='/forgotpassword'>
        <ForgotPassword />
         </Route> 
         <Route path='/passwordreset/:resetToken'>
         <ResetPassword />
         </Route>       
-       <Route exact path='/register'>
-        <Register />
-        </Route> 
-        <Route path='/login'>
-         <Login />
+        </Suspense>
+        <Route path='books'>
+          <Books/>
         </Route>  
+    
         </Switch>
-      </Suspense >
-       ):(
-       <>
-      <BookAnimation />
-      </>
-      )}
+    
+   
+    
     </React.Fragment>
   );
 }

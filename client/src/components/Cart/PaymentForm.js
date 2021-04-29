@@ -3,6 +3,7 @@ import {CardElement, useStripe, useElements } from"@stripe/react-stripe-js"
 import { CartContext } from '../../context/cart'
 import {ImBook} from 'react-icons/im'
 import {  useHistory, } from "react-router-dom";
+import DevBook from '../../DevBook';
 
 
 
@@ -100,7 +101,7 @@ const PaymentForm = () => {
     if(succeeded){
       history.push('/')
     }
-    }, 3000);
+    }, 30000);
   },[history, succeeded])
  
 console.log(name)
@@ -166,6 +167,7 @@ console.log(name)
       </div>
       <div className={succeeded  ? "result-message" : "result-message hidden"}>
        <img src='./audible/money.gif' alt=''/>
+       <DevBook />
         <h1>Payment succeeded</h1>       
       </div>
   
