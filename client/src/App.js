@@ -3,7 +3,8 @@ import React, { Suspense,} from 'react'
 import { Switch, Route } from "react-router-dom";
 import Header from './components/HeaderComponent/Header';
 import Home from "./components/Home/Home"
-import Books from "./components/Home/Books"
+import BookAnimation from './components/Home/BookAnimation';
+
 
 
 
@@ -17,7 +18,7 @@ const Register= React.lazy(
     )
 );
 
-
+ 
   const StripeContainer= React.lazy(
     () =>
       new Promise((resolve, reject) =>
@@ -61,22 +62,37 @@ const Register= React.lazy(
       )
   );
 
-
+  const Books= React.lazy(
+    () =>
+      new Promise((resolve, reject) =>
+        setTimeout(() => resolve(import("./components/Home/Books")), 700)
+      )
+  );
  
  
 const App=()=> {
+  const [loading, setLoading]= React.useState(true)
 
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false)
+    },3000)
+  })
   
   return (
+   
     <React.Fragment>
+      {!loading ? ( 
+       <Suspense fallback={  <div  className="login__loader">
+          <img src='./audible/Glowing ring.gif' alt= ''></img>            
+          </div>  }>            
         <Switch>
+         
         <Route exact path='/'>
          <Header />
          <Home />      
         </Route> 
-        <Suspense fallback={  <div  className="login__loader">
-          <img src='./audible/Glowing ring.gif' alt= ''></img>            
-          </div>  }>    
+       
         <Route exact path='/register'>
         <Register />
         </Route>    
@@ -101,15 +117,16 @@ const App=()=> {
         <Route path='/passwordreset/:resetToken'>
         <ResetPassword />
         </Route>       
-        </Suspense>
         <Route path='books'>
           <Books/>
         </Route>  
     
         </Switch>
     
-   
-    
+       </Suspense> 
+           ):(
+         <BookAnimation />
+       )}
     </React.Fragment>
   );
 }

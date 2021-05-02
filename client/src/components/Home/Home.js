@@ -5,6 +5,7 @@ import { BookContext } from "../../context/books";
 import Filters from './Filters';
 import Responsive from './Responsive'
 import BookAnimation from './BookAnimation'
+import Books from './Books'
 const Home = () => {
   const {
     books,
@@ -35,23 +36,22 @@ const Home = () => {
 
      
 
-  const Books= React.lazy(
-    () =>
-      new Promise((resolve, reject) =>
-        setTimeout(() => resolve(import("./Books")), 700)
-      )
-  );
+
 
    return (
-     <Suspense fallback={<BookAnimation/>}> 
+   
         <div className='books__container' >
+         
             <div ref={ref} className='responsive' >
               <GiHamburgerMenu onClick={()=> setIsCategoryOpen(!isCategoryOpen)}/> 
               {isCategoryOpen ? <Responsive />:null}
             </div>  
+          
             <h1 className='categories'>Categories</h1>
+            
             {categories.map((category) => {
               return (
+                  
              <div
               key={category}
               onClick={() => handleSelectCategory(category)}
@@ -60,12 +60,16 @@ const Home = () => {
              >
             {category}
            </div>
+           
             )
             })}   
+         
             <Filters />
+         
             <Books items={books} />  
+          
         </div>
-        </Suspense>
+   
     )
 }
 
