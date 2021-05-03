@@ -86,13 +86,11 @@ const App=()=> {
        <Suspense fallback={  <div  className="login__loader">
           <img src='./audible/Glowing ring.gif' alt= ''></img>            
           </div>  }>            
-        <Switch>
-         
+        <Switch>       
         <Route exact path='/'>
          <Header />
          <Home />      
-        </Route> 
-       
+        </Route>      
         <Route exact path='/register'>
         <Register />
         </Route>    
@@ -120,9 +118,7 @@ const App=()=> {
         <Route path='books'>
           <Books/>
         </Route>  
-    
-        </Switch>
-    
+        </Switch> 
        </Suspense> 
            ):(
          <BookAnimation />

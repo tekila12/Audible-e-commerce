@@ -275,7 +275,7 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .book__prop {
-  font-size: 12.5px;
+  font-size: 13px !important;
   color: #141414a6;
   margin-bottom: 3px;
 }
