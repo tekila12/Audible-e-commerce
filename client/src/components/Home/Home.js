@@ -12,6 +12,7 @@ const Home = () => {
     categories,
     handleSelectCategory,
     currentSelectedCategory,
+    isLoading
   } = useContext(BookContext)
   const ref = useRef()
   const[isCategoryOpen, setIsCategoryOpen]=useState(false)
@@ -39,19 +40,17 @@ const Home = () => {
 
 
    return (
-   
         <div className='books__container' >
-         
+         {isLoading ? (
+           <BookAnimation />
+         ):null}
             <div ref={ref} className='responsive' >
               <GiHamburgerMenu onClick={()=> setIsCategoryOpen(!isCategoryOpen)}/> 
               {isCategoryOpen ? <Responsive />:null}
-            </div>  
-          
-            <h1 className='categories'>Categories</h1>
-            
+            </div>         
+            <h1 className='categories'>Categories</h1> 
             {categories.map((category) => {
-              return (
-                  
+              return (       
              <div
               key={category}
               onClick={() => handleSelectCategory(category)}

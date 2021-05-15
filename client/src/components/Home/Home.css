@@ -327,7 +327,7 @@
   cursor: pointer;
   height: 35px;
   background: #f7991c;
-  margin-top: 68px;
+  margin-top: 73px !important;
   border: none;
   border-color: #f7991c;
   transition: 0.1s ease-out !important;
@@ -362,7 +362,7 @@
   color: #212325;
   cursor: pointer;
   height: 35px;
-  margin-top: 68px;
+  margin-top: 73px !important;
   border: none;
   width: 200px;
   text-decoration: none;
@@ -381,6 +381,7 @@
   line-height: 19px;
   color: #212325;
   cursor: pointer;
+  margin-top: 92px !important;
   margin-top: 1rem;
   height: 35px;
   transition: 0.1s ease-out !important;
@@ -845,13 +846,13 @@
     margin-top: 100px;
   }
   .adt__infoLogin {
-    margin-top: 49px;
+    margin-top: 32px !important;
   }
   .books__image {
     margin-top: 110px;
   }
   .adt__infoButton {
-    margin-top: 49px;
+    margin-top: 32px !important;
   }
   .book__info > img {
     margin-right: 000px;
@@ -1166,7 +1167,7 @@
     left: 24% !important;
   }
   .books__image {
-    margin-bottom: 30px !important;
+    margin-bottom: 0px !important;
   }
   .books__main .book__content {
     float: none;
@@ -1192,7 +1193,7 @@
   }
 
   .book__content {
-    margin-bottom: 90px;
+    margin-bottom: 80px;
   }
 
   .book__adt {
@@ -1200,7 +1201,7 @@
     flex-direction: column-reverse;
     bottom: 100px;
     left: 10px;
-    margin-bottom: -90px;
+    margin-bottom: -70px;
   }
 
   .book__adt > h4 {

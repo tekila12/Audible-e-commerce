@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import URL from '../utilis/URL';
 const BookContext = React.createContext();
 export default function BooksProvider({ children }) {
-  
+  const [isLoading, setIsLoading] = useState(false)
   const [categories, setCategories] = useState([])
   const [books, setBooks] = useState([])
   const [currentSelectedCategory, setCurrentSelectedCategory] = useState('')
@@ -19,6 +19,7 @@ export default function BooksProvider({ children }) {
   /*fetching data */
 
   const fetchData = async () => {
+    setIsLoading(true)
     const response = await fetch(URL)
     const result = await response.json()
     
@@ -33,7 +34,7 @@ export default function BooksProvider({ children }) {
       }))
       books.push(...booksWithCategory)
     }
-
+    setIsLoading(false)
     setSearchData(result)
     setBooks(books)
     setCategories(categories)
@@ -43,6 +44,8 @@ export default function BooksProvider({ children }) {
   useEffect(() => {
     fetchData()
   }, [])
+
+
 
   const updateFilters = React.useCallback((e) => {
     const type = e.target.type
@@ -92,6 +95,7 @@ export default function BooksProvider({ children }) {
       handleSelectCategory,
       setCurrentSelectedCategory,
       currentSelectedCategory,
+      isLoading
       }   
       }
     >
