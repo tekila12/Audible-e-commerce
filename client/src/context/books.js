@@ -11,7 +11,9 @@ export default function BooksProvider({ children }) {
     regularPrice: 'all',
   })
 
-  
+  /* Created state "currentSelectedCategory" 
+  so I can set category to currentSelectedCategory 
+  */
   const handleSelectCategory = React.useCallback((category) => {
     setCurrentSelectedCategory(category)
   },[])
@@ -25,7 +27,12 @@ export default function BooksProvider({ children }) {
     
     const categories = ['All']
     const books = []
+    
     console.log(books.category)
+    /* Created for in statement where object is result and property is category 
+    so I can push categories into new array(books)
+    */
+    
     for (const category in result) {
       categories.push(category)
       const booksWithCategory = result[category].map((book) => ({
