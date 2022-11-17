@@ -33,15 +33,17 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "/api/auth/register",
+        "http://localhost:5000/api/auth/register",
         {
           username,
           email,
           password,
         },       
         config
+       
       );    
       user.token = data.token;
+      console.log(data)
       localStorage.setItem('user',JSON.stringify(user))
       setUser(user)
       setSuccess(true)

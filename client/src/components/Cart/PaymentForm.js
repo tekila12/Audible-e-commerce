@@ -76,6 +76,7 @@ const PaymentForm = () => {
         card: elements.getElement(CardElement),
         billing_details: {
           name: 'name',
+          
         },
       }
       

@@ -23,12 +23,12 @@ const ResetPassword = () => {
       setConfirmPassword("");
       setTimeout(() => {
         setError("");
-      }, 5000);
+      }, 3000);
       return setError("Passwords don't match");
     }
     try {
       const { data } = await axios.put(
-        `/api/auth/resetpassword/${match.params.resetToken}`,
+        `http://localhost:3000/resetpassword/${match.params.resetToken}`,
         {
           password,
         },
