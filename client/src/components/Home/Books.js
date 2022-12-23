@@ -3,10 +3,22 @@ import { CartContext } from '../../context/cart';
 import HoverBooks from './HoverBooks';
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../../context/user';
+import { BookContext } from '../../context/books';
+import BookAnimation from './BookAnimation'
 const Books = ({items}) => {
 const {addToCart }= useContext(CartContext)
 const { user } = React.useContext(UserContext);
+const {isLoading}= React.useContext(BookContext)
+
+
+
 const history = useHistory()
+
+if(isLoading){
+  return(
+    <BookAnimation />
+  )
+}
     return (     
         <div className='books__main'>      
          {items.map((book) => { 
