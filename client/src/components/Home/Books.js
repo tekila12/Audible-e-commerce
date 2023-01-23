@@ -14,11 +14,15 @@ const {isLoading}= React.useContext(BookContext)
 
 const history = useHistory()
 
+
+
 if(isLoading){
   return(
-    <BookAnimation />
+ <div class="load"><div></div><div></div><div></div></div>
   )
 }
+
+
     return (     
         <div className='books__main'>      
          {items.map((book) => { 

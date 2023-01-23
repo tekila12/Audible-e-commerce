@@ -14,7 +14,11 @@ const SlideShow = React.lazy(
     )
 );
 
+
+
 const Book = () => {
+
+
 
   const { state: { book } } = useLocation();
   const { addToCart } = useContext(CartContext)
@@ -22,6 +26,8 @@ const Book = () => {
   console.log(book, bookId)
   const history = useHistory()
   const { user } = React.useContext(UserContext);
+
+  
   return (
     <div>
       <div key={book.id} className='book__info'>

@@ -41,9 +41,7 @@ const Home = () => {
 
    return (
         <div className='books__container' >
-         {isLoading ? (
-           <BookAnimation />
-         ):null}
+      
             <div ref={ref} className='responsive' >
               <GiHamburgerMenu onClick={()=> setIsCategoryOpen(!isCategoryOpen)}/> 
               {isCategoryOpen ? <Responsive />:null}
