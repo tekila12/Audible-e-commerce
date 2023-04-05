@@ -684,7 +684,7 @@
   .book__adt > h4 {
     height: 13px;
     margin-bottom: 13px;
-    margin-top: 6px;
+    margin-top: -6px;
     position: absolute;
   }
   .filters {
