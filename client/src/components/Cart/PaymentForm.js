@@ -104,7 +104,7 @@ const PaymentForm = () => {
     }, 3000);
   },[history, succeeded])
  
-console.log(name)
+
  
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
