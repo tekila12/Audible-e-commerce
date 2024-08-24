@@ -28,7 +28,7 @@ const ResetPassword = () => {
     }
     try {
       const { data } = await axios.put(
-        `/api/auth/resetpassword/${match.params.resetToken}`,
+        `https://audible-e-commerce.onrender.com/api/auth/resetpassword/${match.params.resetToken}`,
         {
           password,
         },

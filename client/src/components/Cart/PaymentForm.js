@@ -24,7 +24,7 @@ const PaymentForm = () => {
   useEffect(() => {
   
     window
-      .fetch("http://localhost:5000/create-payment-intent", {
+      .fetch("https://audible-e-commerce.onrender.com/create-payment-intent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
