@@ -33,7 +33,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://audible-e-commerce.onrender.com/api/auth/register",
         {
           username,
           email,
