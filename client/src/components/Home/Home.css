@@ -474,6 +474,10 @@
   margin-bottom: -30px;
 }
 
+.no__Books{
+  color: red;
+  margin-left: 10px;
+}
 /* media queries */
 @media all and (min-width: 1921px) {
   .categories {
@@ -901,7 +905,7 @@
     font-size: 21px;
   }
   .filters {
-    margin-left: 80px;
+    margin-left: 90px;
     font-size: 15px;
     width: 200px;
   }
@@ -1097,7 +1101,7 @@
     left: 15% !important;
   }
   .filters {
-    margin-left: -60px !important;
+    margin-left: -55px !important;
     font-size: 14px;
   }
   .books__image {
